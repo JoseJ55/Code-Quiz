@@ -31,12 +31,14 @@ function question(){
 
     for(var i = 0; i < currentQuestion.answers.length; i++){
         var answerButton = document.createElement("BUTTON");
+        answerButton.className = "btn" + currentIndex;
+        
         answerButton.innerHTML = i + 1 + ". " + currentQuestion.answers[i];
 
-        var area = document.getElementById("question-area")
+        var area = document.getElementById("answer-area")
         var btnStyle = "margin:1vh 5vw; font-size: 100%; text-align: left; padding: 0 2vw;";
 
-        area.appendChild(answerButton);
+        area.appendChild(answerButton).value = currentQuestion.answers[i];
         area.appendChild(answerButton).style.cssText = btnStyle;
         //appendchild method
         // you need event listner added to these buttons
@@ -45,13 +47,19 @@ function question(){
 }// need to connect the check answers to amke sure the value in the button click is correct.
 
 function checkAnswer(event){
-    console.log("working");
-    // currentIndex++
-    // if(event.target.value == currentQuestion.answer){
+    currentIndex++
+    var area = document.getElementById("answer-area");
+    var checked = document.createElement("P");
 
-    // }
+    if(event.target.value == questions[currentIndex].answer){
+        area.append(document.createElement("BR"))
+        // area.append(checked).innerHTML = "Correct";
+    }
+    else{
+        console.log("wrong")
+    }
 
-    // question();
+    question();
 }
 
 function starting(){

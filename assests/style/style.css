@@ -68,6 +68,10 @@ header{
     padding: 1vh 2vw;
 }
 
+#answer-area{
+    width: 75%;
+}
+
 #answers{
     margin: 1vh 2vw;
     font-size: 100%;
