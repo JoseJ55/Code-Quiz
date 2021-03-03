@@ -78,3 +78,34 @@ header{
     text-align: left;
     padding: 0 2vw;
 }
+
+#score-area{
+    width: 50%;
+    margin: auto;
+    padding: 15vh 10vw;
+    display: none;
+}
+
+#main-text{
+    display: flex;
+    width: 100%;
+    font-size: 150%;
+    padding: 2vh 0;
+}
+
+#score-text{
+    display: flex;
+    width: 100%;
+    font-size: 150%;
+    padding: 2vh 0;
+}
+
+#user-input{
+    width: 100%;
+    font-size: 150%;
+}
+
+#user-text{
+    width: 100%;
+    font-size: 125%;
+}
