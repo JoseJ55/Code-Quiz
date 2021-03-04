@@ -109,3 +109,48 @@ header{
     width: 100%;
     font-size: 125%;
 }
+
+#enter{
+    width: 20%;
+    font-size: 100%;
+    padding: 1vh 1vw;
+    margin: 1vh 1vw;
+    background-color: blueviolet;
+}
+
+#highscores{
+    width: 50%;
+    margin: auto;
+    padding: 15vh 10vw;
+    display: none;
+}
+
+#highscores h3{
+    font-size: 175%;
+    padding: 1vh 3vw;
+}
+
+.highscore-text{
+    width: 90%;
+    font-size: 150%;
+    padding: 2vh 5vw;
+    border: black 2px solid;
+    border-radius: 5px 5px;
+    background-color:lightgray;
+    margin: 1vh 0;
+}
+
+#go-back{
+    width: 20%;
+    font-size: 125%;
+    padding: 1vh 1vw;
+    margin: 1vh 1vw;
+    background-color: blueviolet;
+}
+ #clear{
+    width: 30%;
+    font-size: 125%;
+    padding: 1vh 1vw;
+    margin: 1vh 1vw;
+    background-color: blueviolet;
+ }

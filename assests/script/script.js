@@ -81,21 +81,47 @@ function checkAnswer(event){
 }
 
 function score(){
-    console.log("end")
     var questionArea = document.getElementById("question-area");
     var scoreArea = document.getElementById("score-area");
     var mainText = document.getElementById("main-text");
     var scoreText = document.getElementById("score-text");
     var userText = document.getElementById("user-text");
+    var submit = document.getElementById("enter");
+    var scores = [];
 
     mainText.innerHTML = "You have finished the quiz.\n"
     scoreText.innerHTML = "You got " + quizScore + " correct out of " + questions.length + " questions correct.";
 
+    submit.addEventListener("click", function(){
+        var newScores = {"name": userText.value, "score": quizScore}
+        scores.push(newScores)
+        localStorage.setItem("Scores", JSON.stringify(scores))
+        userText.value = ""
+        highScores();
+    })
+
     questionArea.style.display = "none";
     scoreArea.style.display = "block";
-// need to add input and score to localstorage and still need to figer out how to change questions correctly
-
 }
+
+function highScores(){
+    var scoreArea = document.getElementById("score-area");
+    var highscoreArea = document.getElementById("highscores");
+    var textArea = document.createElement("P");
+    var items = JSON.parse(localStorage.getItem("Scores"));
+    var item = Object.values(items[0])
+
+    scoreArea.style.display = "none";
+    highscoreArea.style.display = "block";
+
+    for(var i = 0; i < items.length; i++){
+        textArea.innerHTML = "1. " + item[0] + " : " + item[1];
+        textArea.className = "highscore-text";
+        highscoreArea.appendChild(textArea);
+    }
+}
+// still need to figer out how to change questions correctly, take the buttons out in html and make them apear from javascript
+
 
 function starting(){
     document.getElementById("main").style.display = "none";
