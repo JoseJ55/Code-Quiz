@@ -6,23 +6,24 @@ var questions = [
     },
     {
     question : "2",
-    answers : ["1", "bololeans", "alerts", "numbers"],
+    answers : ["2", "2", "2", "2"],
     answer : "alerts"
     },
     {
     question : "3",
-    answers : ["strings", "bololeans", "alerts", "numbers"],
+    answers : ["3", "3", "3", "3"],
     answer : "alerts"
     },
     {
     question : "4",
-    answers : ["strings", "bololeans", "alerts", "numbers"],
+    answers : ["4", "4", "4", "4"],
     answer : "alerts"
     }
 ];
 
 var currentIndex = 0;
 var quizScore = 0;
+var timeLeft = 90;
 // need to add something so it get rid of old answer buttons
 function question(){
     var currentQuestion = questions[currentIndex];
@@ -76,7 +77,9 @@ function checkAnswer(event){
         score();
     }
     
-    // document.btn.removeChild(btn);
+     while(area.firstChild){//for(var i = 0; i+1 < area.childElementCount; i++){
+        area.removeChild(area.firstChild);
+    }
     question();
 }
 
@@ -107,26 +110,60 @@ function score(){
 function highScores(){
     var scoreArea = document.getElementById("score-area");
     var highscoreArea = document.getElementById("highscores");
-    var textArea = document.createElement("P");
+    var scoreList = document.getElementById("score-list");
+    var textArea = document.createElement("li");
     var items = JSON.parse(localStorage.getItem("Scores"));
-    var item = Object.values(items[0])
 
     scoreArea.style.display = "none";
     highscoreArea.style.display = "block";
 
+    // console.log(typeof(items.length))
+    // if(items.length == null){
+    //     console.log(null)
+    // }
+
     for(var i = 0; i < items.length; i++){
+        var item = Object.values(items[i])
+        console.log(item[0])
         textArea.innerHTML = "1. " + item[0] + " : " + item[1];
         textArea.className = "highscore-text";
-        highscoreArea.appendChild(textArea);
+        scoreList.appendChild(textArea);
     }
-}
-// still need to figer out how to change questions correctly, take the buttons out in html and make them apear from javascript
+    
 
+    var goBack = document.getElementById("go-back");
+    
+
+    goBack.addEventListener("click", function(event){
+        highscoreArea.style.display = "none";
+        document.getElementById("main").style.display = "block";
+        currentIndex = 0;
+        quizScore = 0;
+    })
+
+    
+}
+
+var clear = document.getElementById("clear");
+clear.addEventListener("click", function(event){
+    localStorage.clear();
+    highScores();
+})
+
+function timing(){
+    var time = document.getElementById("time");
+    time.innerHTML = "90" // need to fix the timer keep getting null
+    // setInterval(function(){
+    //     time.textContent = "Time: " + timeLeft;
+    //     timeLeft--;
+    // }, 1000);
+}
 
 function starting(){
     document.getElementById("main").style.display = "none";
     document.getElementById("question-area").style.display = "block";
     question();
+    timing();
 }
 
 document.getElementById("start").addEventListener("click", starting);

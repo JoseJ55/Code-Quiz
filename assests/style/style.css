@@ -130,6 +130,10 @@ header{
     padding: 1vh 3vw;
 }
 
+#highscores li{
+    text-decoration: none;
+}
+
 .highscore-text{
     width: 90%;
     font-size: 150%;
