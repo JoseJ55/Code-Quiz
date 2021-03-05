@@ -14,13 +14,13 @@ header{
     width: 100%;
 }
 
-.high{
+#high{
     width: 50%;
     padding: 3vh 4vw;
     font-size: 200%;
 }
 
-.time{
+#time{
     width: 50%;
     padding: 3vh 5vw;
     text-align: right;
